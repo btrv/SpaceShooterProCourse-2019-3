@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R) && _isGameOver == true)
+        if(Input.GetButtonDown("Fire1") && _isGameOver == true)
         {
-            Debug.Log("R pressed");
+            Debug.Log("Fire1 is pressed");
             SceneManager.LoadScene(0);
         }
     }

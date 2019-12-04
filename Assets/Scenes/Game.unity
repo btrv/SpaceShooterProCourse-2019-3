@@ -11256,8 +11256,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"R\" \u0447\u0442\u043E\u0431\u044B
-    \u043D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
+  m_Text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"\u041E\u0433\u043E\u043D\u044C\"
+    \u0447\u0442\u043E\u0431\u044B \u043D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
 --- !u!222 &1582951014
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11348,7 +11348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -47.2, y: -25}
+  m_AnchoredPosition: {x: -47.19995, y: -25}
   m_SizeDelta: {x: 97.3, y: 29.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758677225

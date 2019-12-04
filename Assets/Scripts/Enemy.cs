@@ -43,9 +43,10 @@ public class Enemy : MonoBehaviour
             if (player != null)
             player.Damage();
             
-            _enemySpeed = -1f;
+            _enemySpeed = 2f;
             _anim.SetTrigger("OnEnemyDeath");
             _audioSourse.Play();
+            Destroy(GetComponent<Collider2D>());
 
             Destroy (this.gameObject, 1.5f);
         }
@@ -59,9 +60,10 @@ public class Enemy : MonoBehaviour
             _player.AddTenToScore(10);
             
             // this.GetComponent<Rigidbody2D>().Equals(null);
-            _enemySpeed = -3f;
+            _enemySpeed = 2f;
             _anim.SetTrigger("OnEnemyDeath");
             _audioSourse.Play();
+            Destroy(GetComponent<Collider2D>());
 
             Destroy(this.gameObject, 1.5f);
         }
