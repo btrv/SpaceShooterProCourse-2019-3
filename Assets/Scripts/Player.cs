@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField]    private GameObject _leftEnginePrefab;
     [SerializeField]    private GameObject _rightEnginePrefab;
     [SerializeField]    private AudioClip _laserShotAudio;
+    // [SerializeField]    private AudioClip _explosionSound;
     private AudioSource _audioSourse;
 
 
@@ -148,6 +149,9 @@ public class Player : MonoBehaviour
 
         if(_lives < 1) 
         {
+            // _audioSourse.clip = _explosionSound;
+            // _audioSourse.Play();
+            
             Destroy(this.gameObject);
             _spawnManager.OnPlayerDeath();
             _gameManager.GameIsOver();
@@ -196,8 +200,5 @@ public class Player : MonoBehaviour
         _score += points;
         _uiManager.UpdateScore(_score);
     }
-
-    
-
 
 }
