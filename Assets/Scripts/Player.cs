@@ -5,30 +5,24 @@ public class Player : MonoBehaviour
 {
     [SerializeField]    private float _speed = 4f;
     [SerializeField]    private float _speedBoosted = 8;
-
     [SerializeField]    private GameObject _laserPrefab;
-
     [SerializeField]    private GameObject _tripleShotPrefab;
     [SerializeField]    private float _fireRate = 0.1f;
-
-    private float _canFire = -0.5f;
-
+                        private float _canFire = -0.5f;
     [SerializeField]    private int _lives = 3;
-
-    private SpawnManager _spawnManager;
-
-    private bool _isTripleShotActive = false;
-    private bool _isSetSpeedUpActive = false;
-    private bool _isShieldsIsActive = false;
+                        private SpawnManager _spawnManager;
+                        private bool _isTripleShotActive = false;
+                        private bool _isSetSpeedUpActive = false;
+                        private bool _isShieldsIsActive = false;
     [SerializeField]    private GameObject _shieldVis;
     [SerializeField]    private int _score;
-    private UIManager _uiManager;
-    private GameManager _gameManager;
+                        private UIManager _uiManager;
+                        private GameManager _gameManager;
     [SerializeField]    private GameObject _leftEnginePrefab;
     [SerializeField]    private GameObject _rightEnginePrefab;
     [SerializeField]    private AudioClip _laserShotAudio;
-    // [SerializeField]    private AudioClip _explosionSound;
-    private AudioSource _audioSourse;
+    [SerializeField]    private AudioClip _explosion;
+                        private AudioSource _audioSourse;
 
 
     void Start()
@@ -59,9 +53,7 @@ public class Player : MonoBehaviour
         CalculateMovement();
 
         if (Input.GetButtonDown("Fire1") && Time.time > _canFire)
-        {
-            FireLaser();
-        }
+        FireLaser();
     }
 
     void CalculateMovement()
@@ -149,13 +141,17 @@ public class Player : MonoBehaviour
 
         if(_lives < 1) 
         {
-            // _audioSourse.clip = _explosionSound;
-            // _audioSourse.Play();
-            
             Destroy(this.gameObject);
             _spawnManager.OnPlayerDeath();
             _gameManager.GameIsOver();
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) //При столкновении с лазером
+    {
+        if(other.gameObject.tag == "Laser")
+        Destroy(other.gameObject);
+        Damage();
     }
 
     public void SetTripleShotActive()
@@ -193,9 +189,8 @@ public class Player : MonoBehaviour
         _isShieldsIsActive = true;
         _shieldVis.SetActive (true);
     }
-
-    //method to add 10 to the score
-    public void AddTenToScore(int points)
+   
+    public void AddTenToScore(int points) //method to add 10 to the score
     {
         _score += points;
         _uiManager.UpdateScore(_score);

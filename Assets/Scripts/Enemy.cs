@@ -3,10 +3,13 @@
 public class Enemy : MonoBehaviour
 { 
     [SerializeField]    private float _enemySpeed = 4.0f;
-    private Player _player;
-    private Animator _anim;
-    private AudioSource _audioSourse;
-    
+                        private Player _player;
+                        private Animator _anim;
+                        private AudioSource _audioSourse;
+    [SerializeField]    private GameObject _LaserPrefab;
+                        private float _canFire;
+                        private float _fireRate;
+
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
@@ -24,16 +27,36 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        CalculateMovement();
+        if (Time.time > _canFire)
+        EnemyFireLaser();
+    }
+
+    void CalculateMovement()
+    {
         transform.Translate(Vector3.down * _enemySpeed * Time.deltaTime);
         if(transform.position.y <= -6f)
         {
-            float randomX = Random.Range(-8.5f, 8.5f);
+            float randomX = UnityEngine.Random.Range(-8.5f, 8.5f);
             transform.position = new Vector3(randomX, 6, 0);
         }
     }
 
+    private void EnemyFireLaser()
+    {
+        _fireRate = Random.Range(3f, 5f);
+        _canFire = Time.time + _fireRate;
 
-    
+        GameObject enemyLaser = Instantiate(_LaserPrefab, transform.position + new Vector3(0f, -1.2f, 0), Quaternion.identity);
+        Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+
+        //Неизвестно сколько дочерних объектов "Laser" будет в массиве "lasers" - поэтому форлуп по массиву.
+        for(int i = 0; i < lasers.Length; i++)
+        {
+            lasers[i].AssignEnemyLaser();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other) //Damage system
     {
         if(other.gameObject.tag == "Player") //damage player + null checking

@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Fire1 is pressed");
             SceneManager.LoadScene(0);
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        Application.Quit(); 
     }
 
 
