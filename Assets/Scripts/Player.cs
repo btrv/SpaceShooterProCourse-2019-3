@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _shieldVis.SetActive(false);
-        transform.position = new Vector3(0, -2.5f, 0);
+
 
         _audioSourse = GetComponent<AudioSource>();
         if(_audioSourse == null)
@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
         _gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         if(_gameManager == null)
         Debug.LogError("GameManager is NULL");
+        
+        if(_gameManager.isSingleMode == true)
+        transform.position = new Vector3(0, -2.5f, 0);
     }
     
     void Update()

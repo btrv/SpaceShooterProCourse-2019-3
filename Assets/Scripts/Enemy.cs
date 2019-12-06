@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>();
-        if(_player == null)
-        Debug.LogError("Player is NULL");
+        // _player = GameObject.Find("Player").GetComponent<Player>();
+        // if(_player == null)
+        // Debug.LogError("Player is NULL");
 
         _anim = GetComponent<Animator>(); //Аниматор уже прикреплён к объекту Enemy, Find не нужен.
         if(_anim == null)
