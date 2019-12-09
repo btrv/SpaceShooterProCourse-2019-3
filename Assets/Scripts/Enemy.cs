@@ -12,9 +12,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        // _player = GameObject.Find("Player").GetComponent<Player>();
-        // if(_player == null)
-        // Debug.LogError("Player is NULL");
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        if(_player == null)
+        Debug.LogError("Player is NULL");
 
         _anim = GetComponent<Animator>(); //Аниматор уже прикреплён к объекту Enemy, Find не нужен.
         if(_anim == null)
@@ -48,13 +48,17 @@ public class Enemy : MonoBehaviour
         _canFire = Time.time + _fireRate;
 
         GameObject enemyLaser = Instantiate(_LaserPrefab, transform.position + new Vector3(0f, -1.2f, 0), Quaternion.identity);
-        Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
+        
+        //!!!!!Для варианта с префабом из двух лазеров!!!!!
+        
+        // Laser[] lasers = enemyLaser.GetComponentsInChildren<Laser>();
 
-        //Неизвестно сколько дочерних объектов "Laser" будет в массиве "lasers" - поэтому форлуп по массиву.
-        for(int i = 0; i < lasers.Length; i++)
-        {
-            lasers[i].AssignEnemyLaser();
-        }
+        // //Неизвестно сколько дочерних объектов "Laser" будет в массиве "lasers" - поэтому форлуп по массиву.
+        // for(int i = 0; i < lasers.Length; i++)
+        // {
+        //     lasers[i].AssignEnemyLaser();
+        // }
+        enemyLaser.GetComponent<Laser>().AssignEnemyLaser();
     }
 
     private void OnTriggerEnter2D(Collider2D other) //Damage system

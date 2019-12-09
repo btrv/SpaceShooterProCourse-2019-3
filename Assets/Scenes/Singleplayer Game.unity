@@ -10911,7 +10911,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1429640105}
   - component: {fileID: 1429640104}
-  - component: {fileID: 1429640108}
   - component: {fileID: 1429640106}
   - component: {fileID: 1429640107}
   - component: {fileID: 1429640103}
@@ -10947,7 +10946,6 @@ MonoBehaviour:
   _leftEnginePrefab: {fileID: 796690808}
   _rightEnginePrefab: {fileID: 913844767}
   _laserShotAudio: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
-  _explosion: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
 --- !u!212 &1429640104
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11138,27 +11136,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!50 &1429640108
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1429640102}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1491347338
 GameObject:
   m_ObjectHideFlags: 0

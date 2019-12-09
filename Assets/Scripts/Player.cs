@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     [SerializeField]    private GameObject _leftEnginePrefab;
     [SerializeField]    private GameObject _rightEnginePrefab;
     [SerializeField]    private AudioClip _laserShotAudio;
-    [SerializeField]    private AudioClip _explosion;
                         private AudioSource _audioSourse;
 
 
@@ -149,13 +148,6 @@ public class Player : MonoBehaviour
             _spawnManager.OnPlayerDeath();
             _gameManager.GameIsOver();
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other) //При столкновении с лазером
-    {
-        if(other.gameObject.tag == "Laser")
-        Destroy(other.gameObject);
-        Damage();
     }
 
     public void SetTripleShotActive()
