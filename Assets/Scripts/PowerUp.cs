@@ -19,7 +19,7 @@ public class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) //other - это переменная 
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>(); //player - переменная куда складываем искомый объект Player
             if (player != null)
@@ -42,7 +42,9 @@ public class PowerUp : MonoBehaviour
                 case 2: player.SetShieldsActive(); break;
                 default: Debug.Log("Default Value"); break;
             }
-            AudioSource.PlayClipAtPoint(_clip, transform.position); //instantiate для аудио, удаляется после использования
+            
+            //instantiate для аудио, удаляется после использования
+            AudioSource.PlayClipAtPoint(_clip, transform.position); 
 
             Destroy(this.gameObject);
         }

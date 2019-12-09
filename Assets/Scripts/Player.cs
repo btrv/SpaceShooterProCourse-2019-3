@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         _shieldVis.SetActive(false);
-
+        if (_shieldVis == null)
+        Debug.LogError("SieldVis is NULL");
 
         _audioSourse = GetComponent<AudioSource>();
         if(_audioSourse == null)

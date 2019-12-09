@@ -10,13 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 273546141455122626}
   - component: {fileID: 204433449413918754}
-  - component: {fileID: 4699165923232663798}
   - component: {fileID: 4204257423842690531}
   - component: {fileID: 7198158708951792455}
   - component: {fileID: -7768038839594701762}
+  - component: {fileID: 4699165923232663798}
   m_Layer: 0
   m_Name: Tripple_Shot_Powerup
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,21 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4699165923232663798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8857157334714426638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece94c3a6e5a40748951592a5fe48a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _powerUpSpeed: 3
-  powerupID: 0
-  _clip: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
 --- !u!50 &4204257423842690531
 Rigidbody2D:
   serializedVersion: 4
@@ -156,3 +141,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4699165923232663798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857157334714426638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ece94c3a6e5a40748951592a5fe48a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerUpSpeed: 3
+  powerupID: 0
+  _clip: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
