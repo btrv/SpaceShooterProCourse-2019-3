@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.Find("Player").GetComponent<Player>();
+        _player = GameObject.Find("Player 1").GetComponent<Player>();
         if(_player == null)
         Debug.LogError("Player is NULL");
 
@@ -89,7 +89,6 @@ public class Enemy : MonoBehaviour
             if(_player != null)
             _player.AddTenToScore(10);
             
-            // this.GetComponent<Rigidbody2D>().Equals(null);
             _enemySpeed = 2f;
             _anim.SetTrigger("OnEnemyDeath");
             _audioSourse.Play();
