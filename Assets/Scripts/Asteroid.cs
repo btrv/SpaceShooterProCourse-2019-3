@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
@@ -27,6 +25,9 @@ public class Asteroid : MonoBehaviour
             player.Damage();
             
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+
+            _spawnManager.StartSpawning();
+
             Destroy (this.gameObject, 0.1f);
         }
 
@@ -34,7 +35,9 @@ public class Asteroid : MonoBehaviour
         {
             Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
+
             _spawnManager.StartSpawning();
+            
             Destroy(this.gameObject, 0.1f);
         }
     }

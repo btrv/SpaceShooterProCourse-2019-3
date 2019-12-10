@@ -3,9 +3,7 @@
 public class PowerUp : MonoBehaviour
 {
     [SerializeField]    private float _powerUpSpeed = 3;
-
     [SerializeField]    private int powerupID; //ID for powerups: 0 = triple shot, 1 = speed, 2 = shields
-
     [SerializeField]    private AudioClip _clip;
    
     void Update()
@@ -19,7 +17,7 @@ public class PowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) //other - это переменная 
     {
-        if (other.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
             Player player = other.transform.GetComponent<Player>(); //player - переменная куда складываем искомый объект Player
             if (player != null)

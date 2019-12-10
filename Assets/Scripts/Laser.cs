@@ -8,7 +8,9 @@ public class Laser : MonoBehaviour
     void Update()
     {
         if(_isEnemyLaser == false)
-        PlayerLaser();
+        {
+            PlayerLaser();
+        }
         else EnemyLaser();
     }
 
@@ -52,7 +54,7 @@ public class Laser : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if (player != null)
             player.Damage();
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 }

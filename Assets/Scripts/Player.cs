@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField]    private GameObject _rightEnginePrefab;
     [SerializeField]    private AudioClip _laserShotAudio;
                         private AudioSource _audioSourse;
+                        public bool _isPlayerOne = false;
+                        public bool _isPlayerTwo = false;
 
 
     void Start()
@@ -77,9 +79,9 @@ public class Player : MonoBehaviour
 
         // Player bounds - Ограничения передвижения верх-низ
 
-        if (transform.position.y >= 0)
+        if (transform.position.y >= 2)
         {
-            transform.position = new Vector3(transform.position.x, 0, 0);
+            transform.position = new Vector3(transform.position.x, 2, 0);
         }
         else if (transform.position.y <= -4f)
         {
@@ -89,13 +91,13 @@ public class Player : MonoBehaviour
 
         // Player bounds - Ограничения передвижения право-лево
 
-        if (transform.position.x >= 11.3f)
+        if (transform.position.x >= 10.85f)
         {
-            transform.position = new Vector3(-11.3f, transform.position.y, 0);
+            transform.position = new Vector3(-10.85f, transform.position.y, 0);
         }
-        else if (transform.position.x <= -11.3f)
+        else if (transform.position.x <= -10.85f)
         {
-            transform.position = new Vector3(11.3f, transform.position.y, 0);
+            transform.position = new Vector3(10.85f, transform.position.y, 0);
         }
     }
 
@@ -112,7 +114,6 @@ public class Player : MonoBehaviour
             Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.2f, 0), Quaternion.identity);
         }
 
-        //play audio
         _audioSourse.Play();
         
     }

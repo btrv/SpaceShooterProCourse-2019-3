@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-        IEnumerator SpawnPowerUpRoutine()
+    IEnumerator SpawnPowerUpRoutine()
     {
         yield return new WaitForSeconds(5f);
         

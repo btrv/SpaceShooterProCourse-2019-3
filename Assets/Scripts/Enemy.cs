@@ -68,18 +68,21 @@ public class Enemy : MonoBehaviour
             Player player = other.transform.GetComponent<Player>();
 
             if (player != null)
-            player.Damage();
+            {
+                player.Damage();
+                Destroy(GetComponent<Collider2D>());
+            }
             
             _enemySpeed = 2f;
             _anim.SetTrigger("OnEnemyDeath");
             _audioSourse.Play();
-            Destroy(GetComponent<Collider2D>());
 
             Destroy (this.gameObject, 1.5f);
         }
 
         if(other.gameObject.tag == "Laser") //Damage by Laser
         {
+            Destroy(GetComponent<Collider2D>());
             Destroy(other.gameObject);
 
             //add 10 to the score
@@ -90,10 +93,8 @@ public class Enemy : MonoBehaviour
             _enemySpeed = 2f;
             _anim.SetTrigger("OnEnemyDeath");
             _audioSourse.Play();
-            Destroy(GetComponent<Collider2D>());
 
             Destroy(this.gameObject, 1.5f);
         }
     }
-
 }
