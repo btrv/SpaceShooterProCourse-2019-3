@@ -10559,7 +10559,7 @@ GameObject:
   - component: {fileID: 944988201}
   - component: {fileID: 944988200}
   m_Layer: 0
-  m_Name: Player 2
+  m_Name: Player_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10700,7 +10700,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _speedBoosted: 10
   _laserPrefab: {fileID: 783360702313005643, guid: 5ee538bbcc1da8040af9a08050a28a6e,
     type: 3}
   _tripleShotPrefab: {fileID: 1906762765814857287, guid: 2721715bba44aab47a0980802e2b31c2,
@@ -11253,7 +11252,7 @@ GameObject:
   - component: {fileID: 1429640106}
   - component: {fileID: 1429640107}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player_1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11272,7 +11271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
-  _speedBoosted: 10
   _laserPrefab: {fileID: 783360702313005643, guid: 5ee538bbcc1da8040af9a08050a28a6e,
     type: 3}
   _tripleShotPrefab: {fileID: 1906762765814857287, guid: 2721715bba44aab47a0980802e2b31c2,
@@ -11597,8 +11595,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"\u041E\u0433\u043E\u043D\u044C\"
-    \u0447\u0442\u043E\u0431\u044B \u043D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
+  m_Text: "\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"R\" \u0447\u0442\u043E\u0431\u044B
+    \u043D\u0430\u0447\u0430\u0442\u044C \u0437\u0430\u043D\u043E\u0432\u043E"
 --- !u!222 &1582951014
 CanvasRenderer:
   m_ObjectHideFlags: 0

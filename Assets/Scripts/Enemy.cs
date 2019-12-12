@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        _player = GameObject.Find("Player 1").GetComponent<Player>();
+        _player = GameObject.Find("Player_1").GetComponent<Player>();
         if(_player == null)
         Debug.LogError("Player is NULL");
 

@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]    private float _speed = 4f;
-    [SerializeField]    private float _speedBoosted = 8;
+    [SerializeField]    private float _speed = 6f;
     [SerializeField]    private GameObject _laserPrefab;
     [SerializeField]    private GameObject _tripleShotPrefab;
     [SerializeField]    private float _fireRate = 0.1f;
@@ -55,30 +54,50 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-        CalculateMovement();
+        PlayerBounds();
+        SpeedBoosted();
 
-        if (Input.GetButtonDown("Fire1") && Time.time > _canFire)
-        FireLaser();
+        if(_isPlayerOne == true)
+        {
+            PlayerOneMovement();
+            if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
+            FireLaser();
+        }
+
+        if(_isPlayerTwo == true)
+        {
+            PlayerTwoMovement();
+            if (Input.GetKeyDown(KeyCode.RightShift) && Time.time > _canFire)
+            FireLaser();
+        }
     }
 
-    void CalculateMovement()
+    private void PlayerOneMovement()
     {
         float horizontalinput = Input.GetAxis("Horizontal");
         float verticalinput = Input.GetAxis("Vertical");
-
-        //x y controls
-        //new Vector3(-1, 0, 0) * 1 * 3.5f real time
-        //transform.Translate(Vector3.right * horizontalinput * _speed * Time.deltaTime);
-        //transform.Translate(Vector3.up * verticalinput * _speed * Time.deltaTime);
-
-        if(_isSetSpeedUpActive == false)
+    
         transform.Translate(new Vector3(horizontalinput, verticalinput, 0) * _speed * Time.deltaTime);
-        else
-        transform.Translate(new Vector3(horizontalinput, verticalinput, 0) * _speedBoosted * Time.deltaTime);
+    }
 
+    private void PlayerTwoMovement()
+    {
+        if(Input.GetKey(KeyCode.Keypad4))
+        transform.Translate(Vector3.left * _speed * Time.deltaTime);
 
-        // Player bounds - Ограничения передвижения верх-низ
+        if(Input.GetKey(KeyCode.Keypad6))
+        transform.Translate(Vector3.right * _speed * Time.deltaTime);
 
+        if(Input.GetKey(KeyCode.Keypad8))
+        transform.Translate(Vector3.up * _speed * Time.deltaTime);
+
+        if(Input.GetKey(KeyCode.Keypad5))
+        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+    }
+
+    void PlayerBounds()
+    {
+        // Ограничения передвижения верх-низ
         if (transform.position.y >= 2)
         {
             transform.position = new Vector3(transform.position.x, 2, 0);
@@ -88,9 +107,7 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(transform.position.x, -4f, 0);
         }
 
-
-        // Player bounds - Ограничения передвижения право-лево
-
+        // Ограничения передвижения право-лево
         if (transform.position.x >= 10.85f)
         {
             transform.position = new Vector3(-10.85f, transform.position.y, 0);
@@ -151,6 +168,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SpeedBoosted()
+    {
+        if(_isSetSpeedUpActive == true)
+        _speed = 10f;
+        else
+        _speed = 6f;
+    }
+    
     public void SetTripleShotActive()
     {
         _isTripleShotActive = true;

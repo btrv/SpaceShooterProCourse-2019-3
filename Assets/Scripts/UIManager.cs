@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]    private Sprite[] _LiveSprites;
     [SerializeField]    private GameObject _gameOver;
     [SerializeField]    private Text _restartText;
+    [SerializeField]    private GameObject _pauseMenuPanel;
 
 
 
@@ -56,5 +57,17 @@ public class UIManager : MonoBehaviour
             _gameOver.SetActive(false);
             yield return new WaitForSeconds (0.5f);
         }
+    }
+
+    public void ResumePlay() //Call from GameManager
+    {
+        GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
+        gm.ResumePlay();
+    }
+
+    public void StartMainMenu()
+    {
+        GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();
+        gm.StartMainMenu();
     }
 }
