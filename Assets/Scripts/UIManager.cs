@@ -5,31 +5,37 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]    private Text _scoreText;
+    [SerializeField]    private Text _recordScoreText;
+    [SerializeField]    private Text _restartText;
     [SerializeField]    private Image _livesImg;
     [SerializeField]    private Sprite[] _LiveSprites;
     [SerializeField]    private GameObject _gameOver;
-    [SerializeField]    private Text _restartText;
     [SerializeField]    private GameObject _pauseMenuPanel;
-
-
+    int m_Score;
 
     void Start()
     {
+        SetHiScore();
         //assign text component to handle
         _scoreText.text = "Счёт: " + 0;
         _gameOver.SetActive(false);
         _restartText.gameObject.SetActive(false);
     }
 
-    // void Update()
-    // {
-    //     if(_LiveSprites[0] && Input.GetKeyDown(KeyCode.R))
-    //     SceneManager.LoadScene("Game");
-    // }
-
+    void SetHiScore()
+    {
+        m_Score = PlayerPrefs.GetInt("hiScore", 0);
+        UpdateRecordText(m_Score);
+    }
+    
     public void UpdateScore(int playerScore)
     {
         _scoreText.text = "Счёт: " + playerScore;
+    }
+
+    public void UpdateRecordText(int pts)
+    {
+       _recordScoreText.text = "Рекорд: " + pts;
     }
 
     public void UpdateLives(int _currentlives)
@@ -41,13 +47,13 @@ public class UIManager : MonoBehaviour
         if(_currentlives == 0)
         GameOverSequence();
     }
-
+    
     public void GameOverSequence()
     {
         StartCoroutine (BlinkingText());
         _restartText.gameObject.SetActive(true);
     }
-
+    
     IEnumerator BlinkingText()
     {
         while(true)
@@ -58,7 +64,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds (0.5f);
         }
     }
-
+    
     public void ResumePlay() //Call from GameManager
     {
         GameManager gm = GameObject.Find("Game_Manager").GetComponent<GameManager>();

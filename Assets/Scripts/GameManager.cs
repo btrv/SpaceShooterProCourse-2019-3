@@ -6,6 +6,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]    private bool _isGameOver;
                         public bool isSingleMode = true;
     [SerializeField]    private GameObject _pauseMenuPanel;
+                        private Animator _pauseAnimator;
+
+    private void Start()
+    {
+        _pauseMenuPanel.SetActive(true);
+        _pauseAnimator = GameObject.Find("Pause_Menu_Panel").GetComponent<Animator>();
+        _pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        _pauseMenuPanel.SetActive(false);
+    }
 
     void Update()
     {
@@ -16,12 +25,16 @@ public class GameManager : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
-        Application.Quit();
+        {
+            Debug.Log("Escape is pressed");
+            Application.Quit();
+        }
 
         if(Input.GetKeyDown(KeyCode.P))
         {
             Time.timeScale = 0;
             _pauseMenuPanel.SetActive(true);
+            _pauseAnimator.SetBool("isPaused", true);
         }
 
     }

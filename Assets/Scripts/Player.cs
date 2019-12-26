@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
                         private bool _isShieldsIsActive = false;
     [SerializeField]    private GameObject _shieldVis;
     [SerializeField]    private int _score;
+                        private int _bestScore;
                         private UIManager _uiManager;
                         private GameManager _gameManager;
     [SerializeField]    private GameObject _leftEnginePrefab;
@@ -162,6 +163,7 @@ public class Player : MonoBehaviour
 
         if(_lives < 1) 
         {
+            SendCurrentScoreToBest(_score);
             Destroy(this.gameObject);
             _spawnManager.OnPlayerDeath();
             _gameManager.GameIsOver();
@@ -216,6 +218,15 @@ public class Player : MonoBehaviour
     {
         _score += points;
         _uiManager.UpdateScore(_score);
+
     }
 
+    public void SendCurrentScoreToBest(int pts)
+    {
+        if(_score > _bestScore)
+        {
+            _uiManager.UpdateRecordText(pts);
+            PlayerPrefs.SetInt("hiScore", pts);
+        }
+    }
 }
